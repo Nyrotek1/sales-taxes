@@ -1,7 +1,8 @@
 import json
-from taxes.helpers import *
+from .helpers import *
 from math import ceil
 from decimal import Decimal
+import pathlib
 
 
 class Taxes():
@@ -23,32 +24,35 @@ class Taxes():
         self.items = None
         self.cart = None
 
-    def import_json_data(self, file_path) -> list:
-        """Imports the data from a JSON file into a list for the current class instance and also returns the list.
-        JSON needs to be array of item objects containing at least:  
+    def import_json_data(self, input_data) -> list:
+        """Imports the data from a JSON file or python list into a list for the current class instance and also returns the list.
+        JSON or list needs to be array of item objects containing at least:  
         'item_id': str, 'imported': bool and 'count': int"""
-        items = open(file_path)
-        self.items = json.load(items)
-        items.close()
-        return self.items
+        
+        if not isinstance(input_data, pathlib.PurePath) and not isinstance(input_data, list):
+            raise Exception(f'The input_data argument is {input_data} and has type {type(input_data)} but needs to be either path to JSON-File or list with items.')
+        elif not isinstance(input_data, pathlib.PurePath) and isinstance(input_data, list):
+            self.items = input_data
+        else:
+            items = open(input_data)
+            self.items = json.load(items)
+            items.close()
+            return self.items
 
-    def import_products_data(self, file_path) -> list:
-        """Imports the products from a JSON file into a list for the current class instance and also returns the list.
-        JSON needs to be array of item objects containing at least: 
+    def import_products_data(self, input_data) -> list:
+        """Imports the products from a JSON file or python list into a list for the current class instance and also returns the list.
+        JSON or list needs to be array of item objects containing at least: 
         'id': str, 'name': str, 'price': str and 'tag': str"""
-        products = open(file_path)
-        self.products = json.load(products)
-        products.close()
-        return self.products
 
-    def import_txt_data(self, file_path):
-        pass
-
-    def import_str_data(self, data_str):
-        pass
-
-    def export_taxes_json(self, file_path):
-        pass
+        if not isinstance(input_data, pathlib.PurePath) and not isinstance(input_data, list):
+            raise Exception(f'The input_data argument is {input_data} and has type {type(input_data)} but needs to be either path to JSON-File or list with products.')
+        elif not isinstance(input_data, pathlib.PurePath) and isinstance(input_data, list):
+            self.products = input_data
+        else:
+            products = open(input_data)
+            self.products = json.load(products)
+            products.close()
+            return self.products
 
     def calculate_single_item(self, tag: str, price: str, imported: bool, name='item', count=1) -> dict:
         """Calculates taxes with given arguments. Returns dict with name, count, taxes and taxed price. 
@@ -100,6 +104,10 @@ class Taxes():
         return self.last_item
 
     def calculate_items(self, items = None):
+        """Calculates all items based on the JSON items and JSON products imported with import_json_data() and import_json_products().
+        Items can be overwritten by passing items list as argument to this method.
+        List needs to contain item objects containing at least:
+        'item_id': str, 'imported': bool and 'count': int"""
         if not isinstance(items, list) and not isinstance(self.items, list):
             raise Exception(f'items argument is {items} and imported JSON items is {self.items}. one of both must be a valid list type!')
         elif not isinstance(items, list) and isinstance(self.items, list):
