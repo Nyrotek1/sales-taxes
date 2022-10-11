@@ -1,6 +1,5 @@
 ## Itemis coding challenge - Sales Taxes
 
----
 
 ### Documentation:
 
@@ -51,6 +50,8 @@ The calculate_items method accepts an items list with same format as specified a
 The calculate_items method loops through the items, calculates the taxes for every item in the list and returns the taxed_items as a python dict.
 
 The print_str method creates a string with the format from the coding challenge file output from this challenge for all calculated items in the class instance and returns it.
+
+---
 
 ### Why json and not command line input, text file or string?
 
