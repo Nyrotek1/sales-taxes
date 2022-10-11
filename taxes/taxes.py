@@ -26,6 +26,7 @@ class Taxes():
 
     def import_json_data(self, input_data) -> list:
         """Imports the data from a JSON file or python list into a list for the current class instance and also returns the list.
+        Argument input_data accepts either list type or pathlib.PurePath type.
         JSON or list needs to be array of item objects containing at least:  
         'item_id': str, 'imported': bool and 'count': int"""
         
@@ -42,6 +43,7 @@ class Taxes():
     def import_products_data(self, input_data) -> list:
         """Imports the products from a JSON file or python list into a list for the current class instance and also returns the list.
         JSON or list needs to be array of item objects containing at least: 
+        Argument input_data accepts either list type or pathlib.PurePath type.
         'id': str, 'name': str, 'price': str and 'tag': str"""
 
         if not isinstance(input_data, pathlib.PurePath) and not isinstance(input_data, list):
