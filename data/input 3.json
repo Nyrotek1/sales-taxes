@@ -1,0 +1,22 @@
+[
+    {
+        "item_id": "5",
+        "imported": true,
+        "count": 1
+    },
+    {
+        "item_id": "6",
+        "imported": false,
+        "count": 1
+    },
+    {
+        "item_id": "7",
+        "imported": false,
+        "count": 1
+    },
+    {
+        "item_id": "8",
+        "imported": true,
+        "count": 1
+    }
+]

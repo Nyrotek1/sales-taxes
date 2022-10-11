@@ -1,0 +1,56 @@
+[
+    {
+        "id": "0",
+        "name": "book",
+        "price": "12.49",
+        "tag": "book"
+    },
+    {
+        "id": "1",
+        "name": "music CD",
+        "price": "14.99",
+        "tag": "entertainment"
+    },
+    {
+        "id": "2",
+        "name": "chocolate bar",
+        "price": "0.85",
+        "tag": "food"
+    },
+    {
+        "id": "3",
+        "name": "box of chocolates",
+        "price": "10.0",
+        "tag": "food"
+    },
+    {
+        "id": "4",
+        "name": "bottle of perfume",
+        "price": "47.5",
+        "tag": "cosmetics"
+    },
+    {
+        "id": "5",
+        "name": "bottle of perfume",
+        "price": "27.99",
+        "tag": "cosmetics"
+    },
+    {
+        "id": "6",
+        "name": "bottle of perfume",
+        "price": "18.99",
+        "tag": "cosmetics"
+    },
+    {
+        "id": "7",
+        "name": "packet of headache pills",
+        "price": "9.75",
+        "tag": "medical product"
+    },
+    {
+        "id": "8",
+        "name": "box of chocolates",
+        "price": "11.25",
+        "tag": "food"
+    }
+]
